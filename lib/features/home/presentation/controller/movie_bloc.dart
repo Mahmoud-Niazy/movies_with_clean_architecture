@@ -17,7 +17,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     this.fetchNowPlayingMoviesUseCase,
     this.fetchPopularMoviesUseCase,
       this.fetchTopRatedMoviesUseCase,
-  ) : super(const MovieState()) {
+  ) : super(MovieState()) {
     on<FetchNowPlayingMoviesEvent>((event, emit) async {
       var response = await fetchNowPlayingMoviesUseCase();
       response.fold(

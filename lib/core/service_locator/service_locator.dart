@@ -13,7 +13,7 @@ GetIt serviceLocator = GetIt.instance;
 class ServiceLocator {
   init() {
     ///Bloc
-    serviceLocator.registerFactory(() => MovieBloc(
+    serviceLocator.registerFactory<MovieBloc>(() => MovieBloc(
           serviceLocator(),
           serviceLocator(),
           serviceLocator(),
