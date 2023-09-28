@@ -6,13 +6,13 @@ class MovieEntity extends Equatable{
   final String overview;
   final String releaseDate;
   final num id;
-  final num average;
+  final num voteAverage;
 
   const MovieEntity({
     required this.image,
     required this.title,
     required this.id,
-    required this.average,
+    required this.voteAverage,
     required this.overview,
     required this.releaseDate,
 });
@@ -24,7 +24,7 @@ class MovieEntity extends Equatable{
     overview,
     releaseDate,
     id,
-    average,
+    voteAverage,
   ];
 
 }

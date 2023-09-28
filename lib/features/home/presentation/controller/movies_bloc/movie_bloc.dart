@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/core/utils/request_state.dart';
 import 'package:movie/features/home/domain/use_cases/fetch_now_playing_movies_use_cases.dart';
-import 'package:movie/features/home/presentation/controller/movie_event.dart';
-import 'package:movie/features/home/presentation/controller/movie_state.dart';
+import 'package:movie/features/home/presentation/controller/movies_bloc/movie_event.dart';
+import 'package:movie/features/home/presentation/controller/movies_bloc/movie_state.dart';
 
-import '../../domain/use_cases/fetch_popular_movies_use_case.dart';
-import '../../domain/use_cases/fetch_top_rated_movies_use_case.dart';
+import '../../../domain/use_cases/fetch_popular_movies_use_case.dart';
+import '../../../domain/use_cases/fetch_top_rated_movies_use_case.dart';
 
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
   FetchNowPlayingMoviesUseCase fetchNowPlayingMoviesUseCase;

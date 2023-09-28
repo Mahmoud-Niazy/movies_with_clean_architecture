@@ -10,4 +10,6 @@ class ApiConstance {
 
   static String imageUrl(String path)=>"$baseImageUrl$path";
 
+  static String fetchMovieDetailsPath(int id) =>'$id?api_key=$apiKey';
+
 }

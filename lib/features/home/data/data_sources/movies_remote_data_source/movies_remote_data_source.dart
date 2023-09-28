@@ -1,6 +1,8 @@
 import 'package:movie/core/api_services/api_constance.dart';
 import 'package:movie/core/api_services/api_services.dart';
+import 'package:movie/features/home/data/models/movie_details_model.dart';
 import 'package:movie/features/home/data/models/movie_model.dart';
+import '../../../domain/entities/movie_details_entity.dart';
 import '../../../domain/entities/movie_entity.dart';
 
 abstract class MoviesRemoteDataSource {
@@ -9,6 +11,9 @@ abstract class MoviesRemoteDataSource {
   Future<List<MovieEntity>> fetchTopRatedMovies();
 
   Future<List<MovieEntity>> fetchPopularMovies();
+  
+  Future<MovieDetailsEntity> fetchMovieDetails(int id);
+  
 }
 
 class MoviesRemoteDataSourceImp implements MoviesRemoteDataSource {
@@ -44,6 +49,13 @@ class MoviesRemoteDataSourceImp implements MoviesRemoteDataSource {
     List<MovieEntity> movies = [];
     collectMovies(data, movies);
     return movies;
+  }
+
+  @override
+  Future<MovieDetailsEntity> fetchMovieDetails(int id) async{
+    var data = await apiServices.get(path: ApiConstance.fetchMovieDetailsPath(id));
+    MovieDetailsEntity movieDetailsEntity = MovieDetailsModel.fromJson(data);
+    return movieDetailsEntity;
   }
 }
 

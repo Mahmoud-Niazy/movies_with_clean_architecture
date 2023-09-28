@@ -3,8 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/core/utils/request_state.dart';
-import 'package:movie/features/home/presentation/controller/movie_bloc.dart';
-import 'package:movie/features/home/presentation/controller/movie_state.dart';
+import 'package:movie/features/home/presentation/controller/movies_bloc/movie_bloc.dart';
+import 'package:movie/features/home/presentation/controller/movies_bloc/movie_state.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../../core/api_services/api_constance.dart';
 

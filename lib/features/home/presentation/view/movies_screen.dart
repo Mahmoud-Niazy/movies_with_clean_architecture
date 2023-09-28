@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie/core/service_locator/service_locator.dart';
-import 'package:movie/features/home/presentation/controller/movie_bloc.dart';
+import 'package:movie/features/home/presentation/controller/movies_bloc/movie_bloc.dart';
 import 'package:movie/features/home/presentation/view/widgets/custom_carousel_slider.dart';
 import 'package:movie/features/home/presentation/view/widgets/list_of_popular_movies.dart';
 import 'package:movie/features/home/presentation/view/widgets/list_of_top_rated_movies.dart';
-import '../controller/movie_event.dart';
+import '../controller/movies_bloc/movie_event.dart';
 
 class MainMoviesScreen extends StatelessWidget {
   const MainMoviesScreen({Key? key}) : super(key: key);
