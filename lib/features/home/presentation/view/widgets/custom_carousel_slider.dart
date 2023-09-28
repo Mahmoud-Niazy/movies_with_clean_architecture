@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie/core/utils/app_strings.dart';
 import 'package:movie/core/utils/request_state.dart';
 import 'package:movie/features/home/presentation/view/movie_detail_screen.dart';
 import '../../../../../core/api_services/api_constance.dart';
@@ -88,7 +89,7 @@ class CustomCarouselSlider extends StatelessWidget {
                                       ),
                                       const SizedBox(width: 4.0),
                                       Text(
-                                        'Now Playing'.toUpperCase(),
+                                        AppStrings.nowPlaying,
                                         style: const TextStyle(
                                           fontSize: 16.0,
                                         ),

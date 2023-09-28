@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/core/service_locator/service_locator.dart';
+import 'package:movie/core/utils/app_strings.dart';
 import 'package:movie/features/home/presentation/controller/movie_details_bloc/movie_details_bloc.dart';
 import 'package:movie/features/home/presentation/controller/movie_details_bloc/movie_details_event.dart';
 import 'package:movie/features/home/presentation/view/widgets/custom_sliver_app_bar.dart';
@@ -52,7 +53,7 @@ class MovieDetailContent extends StatelessWidget {
                 from: 20,
                 duration: const Duration(milliseconds: 500),
                 child: Text(
-                  'More like this'.toUpperCase(),
+                  AppStrings.moreLikeThis,
                   style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w500,
