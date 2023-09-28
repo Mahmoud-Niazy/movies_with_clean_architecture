@@ -14,16 +14,16 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
     this.fetchMovieRecommendationsUseCase,
   ) : super(const MovieDetailsState()) {
     on<FetchMovieDetailsEvent>((event, emit) async {
-      await fetchMovieDetails(emit);
+      await fetchMovieDetails(emit,event);
     });
 
-    on<FetchMovieRecommendations>((event, emit) async {
-      await fetchMovieRecommendations(emit);
+    on<FetchMovieRecommendationsEvent>((event, emit) async {
+      await fetchMovieRecommendations(emit,event);
     });
   }
 
-  Future<void> fetchMovieRecommendations(Emitter<MovieDetailsState> emit) async {
-    var response = await fetchMovieRecommendationsUseCase();
+  Future<void> fetchMovieRecommendations(Emitter<MovieDetailsState> emit,FetchMovieRecommendationsEvent event) async {
+    var response = await fetchMovieRecommendationsUseCase(event.id);
     response.fold(
       (failure) => emit(
         state.copyWith(
@@ -41,8 +41,8 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
     );
   }
 
-  Future<void> fetchMovieDetails(Emitter<MovieDetailsState> emit) async {
-    var response = await fetchMovieDetailsUseCase();
+  Future<void> fetchMovieDetails(Emitter<MovieDetailsState> emit,FetchMovieDetailsEvent event) async {
+    var response = await fetchMovieDetailsUseCase(event.id);
     response.fold(
       (failure) => emit(
         state.copyWith(

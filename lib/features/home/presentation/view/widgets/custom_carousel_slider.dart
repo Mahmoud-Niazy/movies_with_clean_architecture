@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/core/utils/request_state.dart';
+import 'package:movie/features/home/presentation/view/movie_detail_screen.dart';
 import '../../../../../core/api_services/api_constance.dart';
 import '../../controller/movies_bloc/movie_bloc.dart';
 import '../../controller/movies_bloc/movie_state.dart';
@@ -14,9 +15,10 @@ class CustomCarouselSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBloc, MovieState>(
-      buildWhen: (previous,current)=> previous.nowPlayingState != current.nowPlayingState ,
+      buildWhen: (previous, current) =>
+          previous.nowPlayingState != current.nowPlayingState,
       builder: (context, state) {
-        print('Build NowPlaying Movies');
+        // print('Build NowPlaying Movies');
         switch (state.nowPlayingState) {
           case RequestState.loading:
             return const SizedBox(
@@ -39,7 +41,9 @@ class CustomCarouselSlider extends StatelessWidget {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
-                        /// TODO : NAVIGATE TO MOVIE DETAILS
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context)=> MovieDetailScreen(id: item.id)),
+                        );
                       },
                       child: Stack(
                         children: [

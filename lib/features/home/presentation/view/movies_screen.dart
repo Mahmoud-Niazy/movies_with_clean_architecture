@@ -13,10 +13,10 @@ class MainMoviesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Build Screen');
+    // print('Build Screen');
     return BlocProvider(
       create: (context) {
-        print('Create');
+        // print('Create');
         return serviceLocator<MovieBloc>()
         ..add(FetchNowPlayingMoviesEvent())
         ..add(FetchPopularMoviesEvent())
@@ -44,9 +44,7 @@ class MainMoviesScreen extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () {
-                        /// TODO : NAVIGATION TO POPULAR SCREEN
-                      },
+                      onTap: () {},
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Row(
@@ -83,9 +81,7 @@ class MainMoviesScreen extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () {
-                        /// TODO : NAVIGATION TO Top Rated Movies Screen
-                      },
+                      onTap: () {},
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Row(

@@ -51,6 +51,7 @@ class MoviesRepoImp extends MoviesRepo {
       return right(moviesDetails);
     }
     catch(error){
+      // print(error.toString());
       return left(Failure());
     }
   }
@@ -62,6 +63,7 @@ class MoviesRepoImp extends MoviesRepo {
       return right(movieRecommendations);
     }
     catch(error){
+      // print(error.toString());
       return left(Failure());
     }
   }

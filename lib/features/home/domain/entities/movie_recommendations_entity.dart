@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class MovieRecommendationsEntity extends Equatable{
-  final String image;
-  final int id ;
+  final String? image;
+  final int? id ;
 
   const MovieRecommendationsEntity({
-    required this.image,
-    required this.id,
+     this.image,
+     this.id,
 });
 
   @override

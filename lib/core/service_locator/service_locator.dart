@@ -4,6 +4,7 @@ import 'package:movie/features/home/data/repos/movies_repo_imp.dart';
 import 'package:movie/features/home/domain/repos/movie_repo.dart';
 import 'package:movie/features/home/domain/use_cases/fetch_movie_details_use_case.dart';
 import 'package:movie/features/home/domain/use_cases/fetch_now_playing_movies_use_cases.dart';
+import 'package:movie/features/home/presentation/controller/movie_details_bloc/movie_details_bloc.dart';
 import 'package:movie/features/home/presentation/controller/movies_bloc/movie_bloc.dart';
 import '../../features/home/data/data_sources/movies_remote_data_source/movies_remote_data_source.dart';
 import '../../features/home/domain/use_cases/fetch_popular_movies_use_case.dart';
@@ -17,6 +18,10 @@ class ServiceLocator {
     ///Bloc
     serviceLocator.registerFactory<MovieBloc>(() => MovieBloc(
           serviceLocator(),
+          serviceLocator(),
+          serviceLocator(),
+        ));
+    serviceLocator.registerFactory<MovieDetailsBloc>(() => MovieDetailsBloc(
           serviceLocator(),
           serviceLocator(),
         ));

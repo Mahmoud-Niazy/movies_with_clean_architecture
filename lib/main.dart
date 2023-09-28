@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie/core/api_services/api_services.dart';
 import 'package:movie/core/service_locator/service_locator.dart';
+import 'package:movie/features/home/presentation/view/movies_screen.dart';
 
-import 'features/home/presentation/view/movies_screen.dart';
+
 
 void main() {
   ServiceLocator().init();
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MainMoviesScreen(),
     );
   }

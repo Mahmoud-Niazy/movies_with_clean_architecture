@@ -7,6 +7,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../../core/api_services/api_constance.dart';
 import '../../controller/movies_bloc/movie_bloc.dart';
 import '../../controller/movies_bloc/movie_state.dart';
+import '../movie_detail_screen.dart';
 
 class ListOfTopRatedMovies extends StatelessWidget{
   const ListOfTopRatedMovies({super.key});
@@ -16,7 +17,7 @@ class ListOfTopRatedMovies extends StatelessWidget{
     return BlocBuilder<MovieBloc,MovieState>(
       buildWhen: (previous,current)=> previous.topRatedState != current.topRatedState ,
       builder: (context,state){
-        print('Build Top Rated Movies');
+        // print('Build Top Rated Movies');
         switch(state.topRatedState){
           case RequestState.loading:
             return const SizedBox(
@@ -42,7 +43,9 @@ class ListOfTopRatedMovies extends StatelessWidget{
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
                         onTap: () {
-                          /// TODO : NAVIGATE TO  MOVIE DETAILS
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context)=> MovieDetailScreen(id: movie.id)),
+                          );
                         },
                         child: ClipRRect(
                           borderRadius:

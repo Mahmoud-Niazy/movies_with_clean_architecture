@@ -11,7 +11,7 @@ class FetchMovieDetailsEvent extends MovieDetailsEvent{
   const FetchMovieDetailsEvent(this.id);
 }
 
-class FetchMovieRecommendations extends MovieDetailsEvent{
+class FetchMovieRecommendationsEvent extends MovieDetailsEvent{
   final int id ;
-  const FetchMovieRecommendations(this.id);
+  const FetchMovieRecommendationsEvent(this.id);
 }

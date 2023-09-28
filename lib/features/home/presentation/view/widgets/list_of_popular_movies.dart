@@ -7,6 +7,7 @@ import 'package:movie/features/home/presentation/controller/movies_bloc/movie_bl
 import 'package:movie/features/home/presentation/controller/movies_bloc/movie_state.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../../core/api_services/api_constance.dart';
+import '../movie_detail_screen.dart';
 
 class ListOfPopularMovies extends StatelessWidget {
   const ListOfPopularMovies({super.key});
@@ -16,7 +17,7 @@ class ListOfPopularMovies extends StatelessWidget {
     return BlocBuilder<MovieBloc, MovieState>(
       buildWhen: (previous,current)=> previous.popularState != current.popularState ,
       builder: (context, state) {
-        print('Build Popular Movies');
+        // print('Build Popular Movies');
         switch (state.popularState) {
           case RequestState.loading:
             return const SizedBox(
@@ -42,7 +43,9 @@ class ListOfPopularMovies extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
                         onTap: () {
-                          /// TODO : NAVIGATE TO  MOVIE DETAILS
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context)=> MovieDetailScreen(id: movie.id)),
+                          );
                         },
                         child: ClipRRect(
                           borderRadius: const BorderRadius.all(Radius.circular(8.0)),
