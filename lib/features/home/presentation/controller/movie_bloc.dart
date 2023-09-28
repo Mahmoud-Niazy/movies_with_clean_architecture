@@ -17,59 +17,72 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     this.fetchNowPlayingMoviesUseCase,
     this.fetchPopularMoviesUseCase,
       this.fetchTopRatedMoviesUseCase,
-  ) : super(MovieState()) {
+  ) : super(const MovieState()) {
     on<FetchNowPlayingMoviesEvent>((event, emit) async {
-      var response = await fetchNowPlayingMoviesUseCase();
-      response.fold(
-        (failure) => emit(
-          state.copyWith(
-            nowPlayingState: RequestState.error,
-            nowPlayingMessage: 'Error',
-          ),
-        ),
-        (movies) => emit(
-          state.copyWith(
-              nowPlayingState: RequestState.loaded,
-              nowPlayingMovies: movies,
-              nowPlayingMessage: 'Success'),
-        ),
-      );
-    });
+      await fetchNowPlayingMovies(emit);
+    }
+    );
 
     on<FetchPopularMoviesEvent>((event, emit) async {
-      var response = await fetchPopularMoviesUseCase();
-      response.fold(
-        (failure) => emit(
-          state.copyWith(
-            popularState: RequestState.error,
-            popularMessage: 'Error',
-          ),
-        ),
-        (movies) => emit(
-          state.copyWith(
-              popularState: RequestState.loaded,
-              popularMovies: movies,
-              popularMessage: 'Success'),
-        ),
-      );
+      await fetchPopularMovies(emit);
     });
 
     on<FetchTopRatedMoviesEvent>((event, emit) async {
-      var response = await fetchTopRatedMoviesUseCase();
-      response.fold(
-            (failure) => emit(
-          state.copyWith(
-            topRatedState: RequestState.error,
-            topRatedMessage: 'Error',
-          ),
-        ),
-            (movies) => emit(
-          state.copyWith(
-              topRatedState: RequestState.loaded,
-              topRatedMovies: movies,
-              topRatedMessage: 'Success'),
-        ),
-      );
+      await fetchTopRatedMovies(emit);
     });
+  }
+
+  Future<void> fetchTopRatedMovies(Emitter<MovieState> emit) async {
+    var response = await fetchTopRatedMoviesUseCase();
+    response.fold(
+          (failure) => emit(
+        state.copyWith(
+          topRatedState: RequestState.error,
+          topRatedMessage: 'Error',
+        ),
+      ),
+          (movies) => emit(
+        state.copyWith(
+            topRatedState: RequestState.loaded,
+            topRatedMovies: movies,
+            topRatedMessage: 'Success'),
+      ),
+    );
+  }
+
+  Future<void> fetchPopularMovies(Emitter<MovieState> emit) async {
+    var response = await fetchPopularMoviesUseCase();
+    response.fold(
+      (failure) => emit(
+        state.copyWith(
+          popularState: RequestState.error,
+          popularMessage: 'Error',
+        ),
+      ),
+      (movies) => emit(
+        state.copyWith(
+            popularState: RequestState.loaded,
+            popularMovies: movies,
+            popularMessage: 'Success'),
+      ),
+    );
+  }
+
+  Future<void> fetchNowPlayingMovies(Emitter<MovieState> emit) async {
+    var response = await fetchNowPlayingMoviesUseCase();
+    response.fold(
+      (failure) => emit(
+        state.copyWith(
+          nowPlayingState: RequestState.error,
+          nowPlayingMessage: 'Error',
+        ),
+      ),
+      (movies) => emit(
+        state.copyWith(
+            nowPlayingState: RequestState.loaded,
+            nowPlayingMovies: movies,
+            nowPlayingMessage: 'Success'),
+      ),
+    );
   }
 }
