@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie/core/functions/navigate.dart';
 import 'package:movie/core/utils/app_strings.dart';
 import 'package:movie/core/utils/request_state.dart';
 import 'package:movie/features/home/presentation/view/movie_detail_screen.dart';
@@ -42,8 +43,9 @@ class CustomCarouselSlider extends StatelessWidget {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context)=> MovieDetailScreen(id: item.id)),
+                        navigate(
+                          context: context,
+                          screen: MovieDetailScreen(id: item.id),
                         );
                       },
                       child: Stack(

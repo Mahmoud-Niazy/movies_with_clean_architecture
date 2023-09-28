@@ -7,6 +7,7 @@ import 'package:movie/features/home/presentation/controller/movies_bloc/movie_bl
 import 'package:movie/features/home/presentation/controller/movies_bloc/movie_state.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../../core/api_services/api_constance.dart';
+import '../../../../../core/functions/navigate.dart';
 import '../movie_detail_screen.dart';
 
 class ListOfPopularMovies extends StatelessWidget {
@@ -43,8 +44,9 @@ class ListOfPopularMovies extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
                         onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context)=> MovieDetailScreen(id: movie.id)),
+                          navigate(
+                            context: context,
+                            screen: MovieDetailScreen(id: movie.id),
                           );
                         },
                         child: ClipRRect(

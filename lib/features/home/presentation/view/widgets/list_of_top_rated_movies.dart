@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/core/utils/request_state.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../../core/api_services/api_constance.dart';
+import '../../../../../core/functions/navigate.dart';
 import '../../controller/movies_bloc/movie_bloc.dart';
 import '../../controller/movies_bloc/movie_state.dart';
 import '../movie_detail_screen.dart';
@@ -43,8 +44,9 @@ class ListOfTopRatedMovies extends StatelessWidget{
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
                         onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context)=> MovieDetailScreen(id: movie.id)),
+                          navigate(
+                            context: context,
+                            screen: MovieDetailScreen(id: movie.id),
                           );
                         },
                         child: ClipRRect(

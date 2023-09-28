@@ -6,6 +6,7 @@ import 'package:movie/features/home/presentation/view/movie_detail_screen.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../../core/api_services/api_constance.dart';
+import '../../../../../core/functions/navigate.dart';
 import '../../../../../core/utils/request_state.dart';
 import '../../../domain/entities/movie_recommendations_entity.dart';
 import '../../controller/movie_details_bloc/movie_details_bloc.dart';
@@ -65,11 +66,9 @@ class ListOfMovieRecommendations extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 if(recommendation.image!= null){
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          MovieDetailScreen(id: recommendation.id!),
-                    ),
+                  navigate(
+                    context: context,
+                    screen: MovieDetailScreen(id: recommendation.id!),
                   );
                 }
               },
