@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:movie/core/errors/failure.dart';
 import 'package:movie/features/home/data/data_sources/movies_remote_data_source/movies_remote_data_source.dart';
 import 'package:movie/features/home/domain/entities/movie_entity.dart';
+import 'package:movie/features/home/domain/entities/movie_recommendations_entity.dart';
 import '../../domain/entities/movie_details_entity.dart';
 import '../../domain/repos/movie_repo.dart';
 
@@ -48,6 +49,17 @@ class MoviesRepoImp extends MoviesRepo {
     try{
       var moviesDetails = await moviesRemoteDataSource.fetchMovieDetails(id);
       return right(moviesDetails);
+    }
+    catch(error){
+      return left(Failure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MovieRecommendationsEntity>>> fetchMovieRecommendations(int id)async {
+    try{
+      var movieRecommendations = await moviesRemoteDataSource.fetchMovieRecommendations(id);
+      return right(movieRecommendations);
     }
     catch(error){
       return left(Failure());

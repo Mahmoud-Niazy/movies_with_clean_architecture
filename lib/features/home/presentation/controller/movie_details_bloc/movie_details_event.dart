@@ -6,4 +6,12 @@ abstract class MovieDetailsEvent extends Equatable{
   List<Object> get props => [];
 }
 
-class FetchMovieDetailsEvent extends MovieDetailsEvent{}
+class FetchMovieDetailsEvent extends MovieDetailsEvent{
+  final int id ;
+  const FetchMovieDetailsEvent(this.id);
+}
+
+class FetchMovieRecommendations extends MovieDetailsEvent{
+  final int id ;
+  const FetchMovieRecommendations(this.id);
+}

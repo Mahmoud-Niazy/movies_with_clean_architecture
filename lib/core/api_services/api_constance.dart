@@ -12,4 +12,6 @@ class ApiConstance {
 
   static String fetchMovieDetailsPath(int id) =>'$id?api_key=$apiKey';
 
+  static String fetchMovieRecommendations(int id) => '$id/recommendations?api_key=$apiKey';
+
 }

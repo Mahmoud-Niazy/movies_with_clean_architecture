@@ -7,6 +7,7 @@ import 'package:movie/features/home/domain/use_cases/fetch_now_playing_movies_us
 import 'package:movie/features/home/presentation/controller/movies_bloc/movie_bloc.dart';
 import '../../features/home/data/data_sources/movies_remote_data_source/movies_remote_data_source.dart';
 import '../../features/home/domain/use_cases/fetch_popular_movies_use_case.dart';
+import '../../features/home/domain/use_cases/fetch_recommendations_use_case.dart';
 import '../../features/home/domain/use_cases/fetch_top_rated_movies_use_case.dart';
 
 GetIt serviceLocator = GetIt.instance;
@@ -36,6 +37,8 @@ class ServiceLocator {
         () => FetchTopRatedMoviesUseCase(serviceLocator()));
     serviceLocator.registerLazySingleton<FetchMovieDetailsUseCase>(
         () => FetchMovieDetailsUseCase(serviceLocator()));
+    serviceLocator.registerLazySingleton(
+        () => FetchMovieRecommendationsUseCase(serviceLocator()));
 
     ///Movies Repo
     serviceLocator.registerLazySingleton<MoviesRepo>(

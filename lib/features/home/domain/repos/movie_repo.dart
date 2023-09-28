@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:movie/features/home/domain/entities/movie_entity.dart';
+import 'package:movie/features/home/domain/entities/movie_recommendations_entity.dart';
 import '../../../../core/errors/failure.dart';
 import '../entities/movie_details_entity.dart';
 
@@ -9,4 +10,5 @@ abstract class MoviesRepo{
   Future<Either<Failure,List<MovieEntity>>>fetchPopularMovies();
 
   Future<Either<Failure,MovieDetailsEntity>>fetchMovieDetails(int id);
+  Future<Either<Failure,List<MovieRecommendationsEntity>>>fetchMovieRecommendations(int id);
 }

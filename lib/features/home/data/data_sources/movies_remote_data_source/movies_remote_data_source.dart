@@ -2,8 +2,10 @@ import 'package:movie/core/api_services/api_constance.dart';
 import 'package:movie/core/api_services/api_services.dart';
 import 'package:movie/features/home/data/models/movie_details_model.dart';
 import 'package:movie/features/home/data/models/movie_model.dart';
+import 'package:movie/features/home/domain/entities/movie_recommendations_entity.dart';
 import '../../../domain/entities/movie_details_entity.dart';
 import '../../../domain/entities/movie_entity.dart';
+import '../../models/movie_recommendation_model.dart';
 
 abstract class MoviesRemoteDataSource {
   Future<List<MovieEntity>> fetchNowPlayingMovies();
@@ -13,6 +15,8 @@ abstract class MoviesRemoteDataSource {
   Future<List<MovieEntity>> fetchPopularMovies();
   
   Future<MovieDetailsEntity> fetchMovieDetails(int id);
+
+  Future<List<MovieRecommendationsEntity>> fetchMovieRecommendations(int id);
   
 }
 
@@ -56,6 +60,20 @@ class MoviesRemoteDataSourceImp implements MoviesRemoteDataSource {
     var data = await apiServices.get(path: ApiConstance.fetchMovieDetailsPath(id));
     MovieDetailsEntity movieDetailsEntity = MovieDetailsModel.fromJson(data);
     return movieDetailsEntity;
+  }
+
+  @override
+  Future<List<MovieRecommendationsEntity>> fetchMovieRecommendations(int id) async{
+    var data = await apiServices.get(path: ApiConstance.fetchMovieRecommendations(id));
+    List<MovieRecommendationsEntity> movieRecommendations =[];
+    collectMovieRecommendations(data, movieRecommendations);
+    return movieRecommendations;
+  }
+
+  void collectMovieRecommendations(Map<String, dynamic> data, List<MovieRecommendationsEntity> movieRecommendations) {
+    for(var recommendation in data['results']){
+      movieRecommendations.add(MovieRecommendationsModel.fromJson(recommendation));
+    }
   }
 }
 
