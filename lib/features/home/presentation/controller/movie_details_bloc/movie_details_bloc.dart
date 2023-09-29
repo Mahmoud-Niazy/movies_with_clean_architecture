@@ -27,7 +27,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
     response.fold(
       (failure) => emit(
         state.copyWith(
-          movieRecommendationsMessage: 'Error',
+          movieRecommendationsMessage: failure.errorMessage,
           movieRecommendationsRequestState: RequestState.error,
         )
       ),
@@ -46,7 +46,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
     response.fold(
       (failure) => emit(
         state.copyWith(
-          movieDetailsMessage: 'Error',
+          movieDetailsMessage: failure.errorMessage,
           movieDetailsRequestState: RequestState.error,
         ),
       ),

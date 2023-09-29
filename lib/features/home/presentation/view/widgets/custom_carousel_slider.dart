@@ -120,10 +120,10 @@ class CustomCarouselSlider extends StatelessWidget {
               ),
             );
           case RequestState.error:
-            return const SizedBox(
+            return SizedBox(
               height: 400,
               child: Center(
-                child: Text('Error'),
+                child: Text(state.nowPlayingMessage),
               ),
             );
         }

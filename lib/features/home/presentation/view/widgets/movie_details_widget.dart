@@ -132,12 +132,12 @@ class MovieDetailsWidget extends StatelessWidget{
               ),
             );
           case RequestState.error:
-            return const SliverToBoxAdapter(
+            return SliverToBoxAdapter(
               child: SizedBox(
                 height: 250,
                 child: Center(
                   child: Text(
-                    'Error',
+                    state.movieDetailsMessage,
                   ),
                 ),
               ),

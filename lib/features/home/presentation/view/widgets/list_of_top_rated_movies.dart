@@ -79,11 +79,11 @@ class ListOfTopRatedMovies extends StatelessWidget{
               ),
             );
           case RequestState.error :
-            return const SizedBox(
+            return SizedBox(
               height: 170,
               child: Center(
                 child: Text(
-                  'Error',
+                  state.topRatedMessage,
                 ),
               ),
             );

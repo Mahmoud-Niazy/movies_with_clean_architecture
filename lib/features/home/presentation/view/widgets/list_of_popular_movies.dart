@@ -78,11 +78,11 @@ class ListOfPopularMovies extends StatelessWidget {
               ),
             );
           case RequestState.error :
-            return const SizedBox(
+            return SizedBox(
               height: 170,
               child: Center(
                 child: Text(
-                  'Error',
+                  state.popularMessage,
                 ),
               ),
             );

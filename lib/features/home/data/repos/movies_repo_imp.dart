@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:movie/core/errors/failure.dart';
 import 'package:movie/features/home/data/data_sources/movies_remote_data_source/movies_remote_data_source.dart';
 import 'package:movie/features/home/domain/entities/movie_entity.dart';
@@ -18,7 +19,12 @@ class MoviesRepoImp extends MoviesRepo {
       return right(movies);
     }
     catch(error){
-      return left(Failure());
+      if(error is DioException){
+        return left(ServerFailure.fromDioException(error));
+      }
+      else{
+        return left(ServerFailure(error.toString()));
+      }
     }
   }
 
@@ -29,7 +35,12 @@ class MoviesRepoImp extends MoviesRepo {
       return right(movies);
     }
     catch(error){
-      return left(Failure());
+      if(error is DioException){
+        return left(ServerFailure.fromDioException(error));
+      }
+      else{
+        return left(ServerFailure(error.toString()));
+      }
     }
   }
 
@@ -40,7 +51,12 @@ class MoviesRepoImp extends MoviesRepo {
       return right(movies);
     }
     catch(error){
-      return left(Failure());
+      if(error is DioException){
+        return left(ServerFailure.fromDioException(error));
+      }
+      else{
+        return left(ServerFailure(error.toString()));
+      }
     }
   }
 
@@ -52,7 +68,12 @@ class MoviesRepoImp extends MoviesRepo {
     }
     catch(error){
       // print(error.toString());
-      return left(Failure());
+      if(error is DioException){
+        return left(ServerFailure.fromDioException(error));
+      }
+      else{
+        return left(ServerFailure(error.toString()));
+      }
     }
   }
 
@@ -64,7 +85,12 @@ class MoviesRepoImp extends MoviesRepo {
     }
     catch(error){
       // print(error.toString());
-      return left(Failure());
+      if(error is DioException){
+        return left(ServerFailure.fromDioException(error));
+      }
+      else{
+        return left(ServerFailure(error.toString()));
+      }
     }
   }
 }

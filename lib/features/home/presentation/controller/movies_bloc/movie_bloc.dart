@@ -38,7 +38,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           (failure) => emit(
         state.copyWith(
           topRatedState: RequestState.error,
-          topRatedMessage: 'Error',
+          topRatedMessage: failure.errorMessage,
         ),
       ),
           (movies) => emit(
@@ -56,7 +56,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       (failure) => emit(
         state.copyWith(
           popularState: RequestState.error,
-          popularMessage: 'Error',
+          popularMessage: failure.errorMessage,
         ),
       ),
       (movies) => emit(
@@ -74,7 +74,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       (failure) => emit(
         state.copyWith(
           nowPlayingState: RequestState.error,
-          nowPlayingMessage: 'Error',
+          nowPlayingMessage: failure.errorMessage,
         ),
       ),
       (movies) => emit(
